@@ -9,7 +9,13 @@ import { useHistory, useRouteMatch } from 'react-router-dom'
 import { useIntl } from 'react-intl'
 import { useLocale } from 'base-shell/lib/providers/Locale'
 import { useMenu } from 'material-ui-shell/lib/providers/Menu'
-import { useTheme } from 'material-ui-shell/lib/providers/Theme'
+import { useTheme } from '@material-ui/core/styles'
+
+
+import { useTheme as useAppTheme } from 'material-ui-shell/lib/providers/Theme'
+
+
+
 // import { createMuiTheme } from '@material-ui/core/styles';
 import { create } from 'jss';
 import rtl from 'jss-rtl';
@@ -23,6 +29,9 @@ const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 }); */
 
 const Menu = (props) => {
+  const theme = useTheme()
+
+
   const intl = useIntl()
   const history = useHistory()
   const match = useRouteMatch()
@@ -35,7 +44,7 @@ const Menu = (props) => {
   const { setLocale, locale = 'en' } = useLocale()
   const { menu } = appConfig || {}
   const { MenuHeader, getMenuItems } = menu || {}
-  const themeContext = useTheme()
+  const themeContext = useAppTheme()
   const menuItems = getMenuItems({
     intl,
     locale,
@@ -69,6 +78,7 @@ const Menu = (props) => {
         style={{
           display: 'flex',
           flexDirection: 'column',
+          direction:'rtl',
           height: '100%',
         }}
       >

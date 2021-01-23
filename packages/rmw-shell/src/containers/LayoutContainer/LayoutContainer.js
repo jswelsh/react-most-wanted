@@ -4,8 +4,8 @@ import React from 'react'
 
 export default function ({ children }) {
   return (
-    <LayoutContainer>
-      <FirebaseContainer>{children}</FirebaseContainer>
-    </LayoutContainer>
+  <LayoutContainer>
+    <FirebaseContainer>{children}</FirebaseContainer>
+  </LayoutContainer>
   )
 }

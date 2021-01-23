@@ -12,7 +12,7 @@ const Page = () => {
       path={
         'https://raw.githubusercontent.com/TarikHuber/react-most-wanted/master/README.md'
       }
-    />
+      />
   )
 }
 

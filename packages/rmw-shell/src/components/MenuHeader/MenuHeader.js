@@ -133,8 +133,8 @@ const MenuHeader = () => {
                       }}
                     >
                       {theme.direction === 'rtl' && (
+                        )}
                         <ChevronRight classes={{ root: classes.icon }} />
-                      )}
                       {theme.direction !== 'rtl' && (
                         <ChevronLeft classes={{ root: classes.icon }} />
                       )}
