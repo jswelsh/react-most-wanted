@@ -10,6 +10,17 @@ import { useIntl } from 'react-intl'
 import { useLocale } from 'base-shell/lib/providers/Locale'
 import { useMenu } from 'material-ui-shell/lib/providers/Menu'
 import { useTheme } from 'material-ui-shell/lib/providers/Theme'
+// import { createMuiTheme } from '@material-ui/core/styles';
+import { create } from 'jss';
+import rtl from 'jss-rtl';
+import { StylesProvider, jssPreset } from '@material-ui/core/styles';
+
+// Configure JSS
+const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
+
+/* const theme = createMuiTheme({
+  direction: 'rtl',
+}); */
 
 const Menu = (props) => {
   const intl = useIntl()
@@ -51,6 +62,7 @@ const Menu = (props) => {
   }
 
   return (
+    <StylesProvider jss={jss}>
     <ResponsiveMenu>
       {MenuHeader && <MenuHeader />}
       <div
@@ -71,6 +83,7 @@ const Menu = (props) => {
         </Scrollbar>
       </div>
     </ResponsiveMenu>
+    </StylesProvider>
   )
 }
 

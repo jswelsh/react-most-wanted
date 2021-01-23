@@ -1,5 +1,9 @@
 import AppBar from '@material-ui/core/AppBar'
 import ChevronLeft from '@material-ui/icons/ChevronLeft'
+
+import ChevronRight from '@material-ui/icons/ChevronRight'
+
+
 import IconButton from '@material-ui/core/IconButton'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import MenuContext from 'material-ui-shell/lib/providers/Menu/Context'
@@ -13,7 +17,9 @@ import { useConfig } from 'base-shell/lib/providers/Config'
 import { useIntl } from 'react-intl'
 import { useOnline } from 'base-shell/lib/providers/Online'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => {
+  console.log("billll", theme.direction);
+  return ({
   root: {
     width: '100%',
     display: 'flex',
@@ -22,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
   },
   appBar: {
+
     zIndex: theme.zIndex.drawer,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -31,13 +38,18 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarShift: {
     width: (props) => `calc(100% - ${props.width}px)`,
+
+    // transform: 'translate(-240px)',
+    transform: theme.direction === 'rtl' ? 'translate(-240px)': null,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
   menuButton: {
-    marginLeft: -12,
+    // marginLeft: -12,
+    // marginRight: -12,
+
   },
   hide: {
     display: 'none',
@@ -64,7 +76,8 @@ const useStyles = makeStyles((theme) => ({
   grow: {
     flex: '1 1 auto',
   },
-}))
+})
+})
 
 export default function ({
   children,
@@ -108,7 +121,7 @@ export default function ({
       setMobileMenuOpen(!isMobileMenuOpen)
     }
   }
-  
+  console.log("goooooooooooo",theme.direction);
   return (
     <div className={classes.root}>
       <AppBar
@@ -139,10 +152,14 @@ export default function ({
             onClick={onBackClick}
             className={clsx(classes.menuButton, !onBackClick && classes.hide)}
           >
-            <ChevronLeft />
+            <ChevronRight />
+{/*             {theme.direction === 'rtl' && (
+              <ChevronLeft classes={{ root: classes.icon }} />)}
+            {theme.direction !== 'rtl' && (
+              <ChevronRight classes={{ root: classes.icon }} />)} */}
           </IconButton>
           {!onBackClick && isMenuOpen && false && (
-            <div style={{ marginRight: 32 }} />
+            <div style={{ marginRight: 32/* , marginLeft: 32 */ }} />
           )}
 
           <Typography variant="h6" color="inherit" noWrap>

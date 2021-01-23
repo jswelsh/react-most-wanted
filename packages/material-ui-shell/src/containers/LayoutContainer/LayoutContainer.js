@@ -28,7 +28,9 @@ export default function ({ children }) {
         <UpdateContainer>
           <QuestionDialogsProvider>
             <FilterProvider>
-              <VirtualListsProvider>{children}</VirtualListsProvider>
+              <VirtualListsProvider>
+                {children}
+              </VirtualListsProvider>
             </FilterProvider>
           </QuestionDialogsProvider>
         </UpdateContainer>

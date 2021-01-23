@@ -95,6 +95,7 @@ const getMenuItems = (props) => {
     {
       primaryText: intl.formatMessage({ id: 'demos', defaultMessage: 'Demos' }),
       primaryTogglesNestedList: true,
+      direction: 'rtl',
       leftIcon: <Web />,
       nestedItems: [
         {

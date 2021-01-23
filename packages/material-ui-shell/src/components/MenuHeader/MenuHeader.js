@@ -62,6 +62,8 @@ const MenuHeader = () => {
     setAuthMenuOpen,
   } = useMenu()
 
+
+
   const isAuthenticated = auth.isAuthenticated
   const AvatarConstructor = ({src, alt, avatar}) => {
     return (
@@ -115,7 +117,7 @@ const MenuHeader = () => {
                       onClick={() => {
                         setMenuOpen(false)
                       }}
-                    >
+                    > 
                       {theme.direction === 'rtl' && (
                         <ChevronRight classes={{ root: classes.icon }} />)}
                       {theme.direction !== 'rtl' && (

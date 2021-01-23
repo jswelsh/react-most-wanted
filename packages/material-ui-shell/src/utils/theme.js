@@ -11,6 +11,8 @@ const getThemeSource = (id, ts, type = 'light') => {
         return createMuiTheme({
           ...source,
           palette: { ...palette, type },
+          direction: 'rtl'
+
         })
       }
     }
@@ -18,6 +20,7 @@ const getThemeSource = (id, ts, type = 'light') => {
 
   return createMuiTheme({
     palette: { type },
+    direction: 'rtl'
   })
 }
 
