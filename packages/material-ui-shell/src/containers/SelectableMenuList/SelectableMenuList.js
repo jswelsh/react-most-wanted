@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import { useTheme as useAppTheme } from 'material-ui-shell/lib/providers/Theme'
+import { useMenu } from 'material-ui-shell/lib/providers/Menu'
 import {
   KeyboardArrowLeft as KeyboardArrowLeftIcon,
   KeyboardArrowRight as KeyboardArrowRight,
@@ -14,6 +15,7 @@ import {
   ListItemIcon,
   ListItemSecondaryAction,
   ListItemText,
+  Tooltip,
 } from '@material-ui/core'
 
 
@@ -66,6 +68,7 @@ const SelectableMenuList = ({ onIndexChange, useMinified, items, index }) => {
 
   const getItem = (item, i) => {
     const { isRTL } = useAppTheme()
+    const { isMiniMode } = useMenu ()
     const { index } = state
 
     delete item.visible
@@ -81,6 +84,7 @@ const SelectableMenuList = ({ onIndexChange, useMinified, items, index }) => {
         return <Divider key={i} inset={item.inset} style={item.style} />
       } else {
         return (
+        <Tooltip disableFocusListener disableTouchListener disableHoverListener={!isMiniMode} title={item.primaryText} aria-label={item.primaryText} placement={isRTL ? 'left':'right' }>
           <ListItem
             button
             selected={index && index === item.value}
@@ -120,6 +124,7 @@ const SelectableMenuList = ({ onIndexChange, useMinified, items, index }) => {
               </ListItemSecondaryAction>
             )}
           </ListItem>
+        </Tooltip>
         )
       }
     }
