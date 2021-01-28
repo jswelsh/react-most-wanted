@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import { useTheme as useAppTheme } from 'material-ui-shell/lib/providers/Theme'
 import { useMenu } from 'material-ui-shell/lib/providers/Menu'
+import { makeStyles } from '@material-ui/core/styles'
 import {
   KeyboardArrowLeft as KeyboardArrowLeftIcon,
   KeyboardArrowRight as KeyboardArrowRight,
@@ -16,11 +17,17 @@ import {
   ListItemSecondaryAction,
   ListItemText,
   Tooltip,
+  Typography,
 } from '@material-ui/core'
 
-
+const useStyles = makeStyles((theme) => ({
+  ToolTip: {
+    fontSize:'4em'
+  }
+}))
 const SelectableMenuList = ({ onIndexChange, useMinified, items, index }) => {
   const [state, setState] = useState({})
+  const classes = useStyles()
 
   //Clears nested state if the root items change
   //Used to open auth menu if we are in a nested menu
@@ -84,7 +91,17 @@ const SelectableMenuList = ({ onIndexChange, useMinified, items, index }) => {
         return <Divider key={i} inset={item.inset} style={item.style} />
       } else {
         return (
-        <Tooltip disableFocusListener disableTouchListener disableHoverListener={!isMiniMode} title={item.primaryText} aria-label={item.primaryText} placement={isRTL ? 'left':'right' }>
+        <Tooltip
+          disableFocusListener
+          disableTouchListener
+          disableHoverListener={!isMiniMode}
+          aria-label={item.primaryText}
+          placement={isRTL ? 'left':'right' }
+          title={
+            <Typography
+              variant='button'
+              children={item.primaryText}/>}
+        >
           <ListItem
             button
             selected={index && index === item.value}
@@ -92,7 +109,6 @@ const SelectableMenuList = ({ onIndexChange, useMinified, items, index }) => {
             onClick={(e) => {
               onIndexChange(e, item.value)
               handleNestedItemsClick(item)
-
               if (item.onClick) {
                 item.onClick()
               }
