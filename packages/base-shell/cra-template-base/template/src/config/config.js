@@ -1,7 +1,7 @@
 import React, { lazy } from 'react'
 import locales from './locales'
 import routes from './routes'
-import getMenuItems from './menuItems'
+import GetMenuItems from './menuItems'
 import LandingPage from '../pages/LandingPage/LandingPage'
 import parseLanguages from 'base-shell/lib/utils/locale'
 
@@ -24,7 +24,7 @@ const config = {
   },
   routes,
   menu: {
-    getMenuItems,
+    GetMenuItems,
   },
   pages: {
     LandingPage: LandingPage,

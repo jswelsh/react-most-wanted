@@ -24,10 +24,10 @@ const Menu = (props) => {
   const { appConfig } = useConfig()
   const { setLocale, locale = 'en' } = useLocale()
   const { menu } = appConfig || {}
-  const { MenuHeader, getMenuItems } = menu || {}
+  const { MenuHeader, GetMenuItems } = menu || {}
   const themeContext = useAppTheme()
 
-  const menuItems = getMenuItems({
+  const menuItems = GetMenuItems({
     intl,
     locale,
     updateLocale: setLocale,

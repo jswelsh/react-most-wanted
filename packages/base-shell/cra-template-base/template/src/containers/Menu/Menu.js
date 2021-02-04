@@ -12,10 +12,10 @@ const Menu = () => {
   const { appConfig } = useContext(ConfigContext)
   const auth = useContext(AuthContext)
   const { menu } = appConfig || {}
-  const { getMenuItems } = menu || {}
+  const { GetMenuItems } = menu || {}
 
-  const itemsMenu = getMenuItems
-    ? getMenuItems({
+  const itemsMenu = GetMenuItems
+    ? GetMenuItems({
         intl,
         auth,
         locale,

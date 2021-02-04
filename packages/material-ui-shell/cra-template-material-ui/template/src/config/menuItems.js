@@ -24,7 +24,7 @@ import {
 import allLocales from './locales'
 import allThemes from './themes'
 
-const getMenuItems = (props) => {
+const GetMenuItems = (props) => {
   const {
     intl,
     updateLocale,
@@ -210,4 +210,4 @@ const getMenuItems = (props) => {
     },
   ]
 }
-export default getMenuItems
+export default GetMenuItems

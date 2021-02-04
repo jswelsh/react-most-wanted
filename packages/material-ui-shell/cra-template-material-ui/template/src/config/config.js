@@ -1,7 +1,7 @@
 import { lazy } from 'react'
 import locales from './locales'
 import routes from './routes'
-import getMenuItems from './menuItems'
+import GetMenuItems from './menuItems'
 import themes from './themes'
 import parseLanguages from 'base-shell/lib/utils/locale'
 
@@ -19,7 +19,7 @@ const config = {
     },
   },
   menu: {
-    getMenuItems,
+    GetMenuItems,
   },
   theme: {
     themes,
